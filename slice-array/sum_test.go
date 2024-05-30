@@ -1,6 +1,9 @@
 package slice_array
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func Sum(numbers []int) (sum int) {
 	for _, number := range numbers {
@@ -19,4 +22,21 @@ func TestSum(t *testing.T) {
 		}
 	})
 
+}
+
+func SumAll(numbersToSum ...[]int) []int {
+	var sum []int
+
+	for _, numbers := range numbersToSum {
+		sum = append(sum, Sum(numbers))
+	}
+	return sum
+}
+
+func TestSumAll(t *testing.T) {
+	got := SumAll([]int{1, 2}, []int{0, 9})
+	want := []int{3, 9}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
+	}
 }
