@@ -40,3 +40,21 @@ func TestSumAll(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func SumAllTails(numbers ...[]int) []int {
+	var sums []int
+	for _, number := range numbers {
+		tail := number[1:]
+		sums = append(sums, Sum(tail))
+	}
+	return sums
+}
+
+func TestSumAllTails(t *testing.T) {
+	got := SumAllTails([]int{1, 2}, []int{0, 9})
+	want := []int{2, 9}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
