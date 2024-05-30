@@ -2,7 +2,7 @@ package slice_array
 
 import "testing"
 
-func Sum(numbers [5]int) (sum int) {
+func Sum(numbers []int) (sum int) {
 	for _, number := range numbers {
 		sum += number
 	}
@@ -10,11 +10,13 @@ func Sum(numbers [5]int) (sum int) {
 }
 
 func TestSum(t *testing.T) {
-	numbers := [5]int{1, 2, 3, 4, 5}
-	got := Sum(numbers)
-	want := 15
+	t.Run("collection of any size", func(t *testing.T) {
+		numbers := []int{1, 2, 3}
+		got := Sum(numbers)
+		want := 6
+		if got != want {
+			t.Errorf("got %d want %d given, %v", got, want, numbers)
+		}
+	})
 
-	if want != got {
-		t.Errorf("got %d want %d given,%v", got, want, numbers)
-	}
 }
