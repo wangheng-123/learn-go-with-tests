@@ -2,13 +2,8 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"testing"
 )
-
-func Greet(writer *bytes.Buffer, name string) {
-	fmt.Fprintf(writer, "Hello, %s", name)
-}
 
 func TestGreet(t *testing.T) {
 	buffer := bytes.Buffer{}
