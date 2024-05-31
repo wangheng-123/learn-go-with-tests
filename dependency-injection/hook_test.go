@@ -1,4 +1,4 @@
-package dependency_injection
+package main
 
 import (
 	"bytes"
@@ -20,4 +20,8 @@ func TestGreet(t *testing.T) {
 	if got != want {
 		t.Errorf("got '%s' want '%s'", got, want)
 	}
+}
+
+func main() {
+
 }
